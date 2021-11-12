@@ -1,20 +1,47 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const util = require('util')
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 700,
+    height: 500,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
+      preload: path.join(__dirname, 'preload.js'),
+      partition: 'persist:infragistics',
+    },
+    icon: __dirname + '/assets/favicon.ico',
+    show:false
   })
 
+  let cookies = mainWindow.webContents.session.cookies;
+  cookies.on('changed', function(event, cookie, cause, removed) {
+    if (cookie.session && !removed) {
+      let url = util.format('%s://%s%s', (!cookie.httpOnly && cookie.secure) ? 'https' : 'http', cookie.domain, cookie.path);
+      console.log('url', url);
+      cookies.set({
+        url: url,
+        name: cookie.name,
+        value: cookie.value,
+        domain: cookie.domain,
+        path: cookie.path,
+        secure: cookie.secure,
+        httpOnly: cookie.httpOnly,
+        expirationDate: new Date().setDate(new Date().getDate() + 14)
+      }, function(err) {
+        if (err) {
+          log.error('Error trying to persist cookie', err, cookie);
+        }
+      });
+    }
+  });
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
-
+  // mainWindow.loadFile('index.html')
+  mainWindow.loadURL('https://appbuilder.indigo.design/')
+  mainWindow.maximize();
+  mainWindow.show();
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }

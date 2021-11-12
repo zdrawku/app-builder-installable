@@ -1,12 +1,14 @@
 {
-  "name": "electron-quick-start",
+  "name": "igniteui-app-builder",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A brand-new cloud-based WYSIWYG drag & drop tool that eliminates the complexity of user interface design and development so you can build business apps faster than ever before. Start your app from scratch or choose from a library of pre-built app templates or responsive screen layouts and then customize with a toolbox of 60+ UI controls to kick-start your next digital product design!",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/IgniteUI/app-builder/blob/master/ROADMAP.md",
   "keywords": [
     "Electron",
     "quick",
@@ -14,9 +16,44 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "Infragistics",
   "license": "CC0-1.0",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "electron": "^15.3.1"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "igniteui_app_builder"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
