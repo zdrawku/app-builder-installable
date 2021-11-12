@@ -10,7 +10,7 @@ function createWindow () {
     height: 500,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      partition: 'persist:infragistics',
+      partition: 'persist:infragistics'
     },
     icon: __dirname + '/assets/favicon.ico',
     show:false
