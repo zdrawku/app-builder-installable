@@ -16,11 +16,11 @@
       "target": [
         "nsis"
       ],
-      "icon": "assets/favicon.ico"
+      "icon": "assets/new.ico"
     },
     "nsis": {
-      "installerIcon": "assets/favicon.ico",
-      "uninstallerIcon": "assets/favicon.ico",
+      "installerIcon": "assets/new.ico",
+      "uninstallerIcon": "assets/new.ico",
       "uninstallDisplayName": "Ignite UI App Builder",
       "license": "license.md",
       "oneClick": false,
