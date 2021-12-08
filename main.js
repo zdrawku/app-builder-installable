@@ -12,7 +12,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js'),
       partition: 'persist:infragistics'
     },
-    icon: __dirname + '/assets/favicon.ico',
+    icon: __dirname + '/assets/AppBuilderIcons_Windows.ico',
     show:false
   })
 
