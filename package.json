@@ -21,11 +21,11 @@
       "target": [
         "nsis"
       ],
-      "icon": "assets/new.ico"
+      "icon": "assets/AppBuilderIcons_Windows.ico"
     },
     "nsis": {
-      "installerIcon": "assets/new.ico",
-      "uninstallerIcon": "assets/new.ico",
+      "installerIcon": "assets/AppBuilderIcons_Windows.ico",
+      "uninstallerIcon": "assets/AppBuilderIcons_Windows.ico",
       "uninstallDisplayName": "Ignite UI App Builder",
       "license": "license.md",
       "oneClick": false,
