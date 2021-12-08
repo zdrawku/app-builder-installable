@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, shell } = require('electron')
 const path = require('path')
 const util = require('util')
 
@@ -37,9 +37,16 @@ function createWindow() {
     }
   });
   
+  // External links from browser-window to open in a default browser
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    debugger;
+    shell.openExternal(url);
+    return { action: 'deny' };
+  });
+
   // Remove menu bar
   mainWindow.setMenu(null);
-  mainWindow.loadURL('https://appbuilder.indigo.design/');
+  mainWindow.loadURL('https://cloud.indigo.design/login-and-redirect?target=appbuilder&path=/');
   mainWindow.maximize();
   mainWindow.show();
 }
