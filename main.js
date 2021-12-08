@@ -36,13 +36,12 @@ function createWindow() {
       });
     }
   });
-  // and load the index.html of the app.
-  // mainWindow.loadFile('index.html')
-  mainWindow.loadURL('https://appbuilder.indigo.design/')
+  
+  // Remove menu bar
+  mainWindow.setMenu(null);
+  mainWindow.loadURL('https://appbuilder.indigo.design/');
   mainWindow.maximize();
   mainWindow.show();
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
