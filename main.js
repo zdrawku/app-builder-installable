@@ -1,9 +1,9 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const util = require('util')
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 700,
@@ -13,14 +13,13 @@ function createWindow () {
       partition: 'persist:infragistics'
     },
     icon: __dirname + '/assets/AppBuilderIcons_Windows.ico',
-    show:false
+    show: false
   })
 
   let cookies = mainWindow.webContents.session.cookies;
-  cookies.on('changed', function(event, cookie, cause, removed) {
+  cookies.on('changed', function (cookie, removed) {
     if (cookie.session && !removed) {
       let url = util.format('%s://%s%s', (!cookie.httpOnly && cookie.secure) ? 'https' : 'http', cookie.domain, cookie.path);
-      console.log('url', url);
       cookies.set({
         url: url,
         name: cookie.name,
@@ -30,7 +29,7 @@ function createWindow () {
         secure: cookie.secure,
         httpOnly: cookie.httpOnly,
         expirationDate: new Date().setDate(new Date().getDate() + 14)
-      }, function(err) {
+      }, function (err) {
         if (err) {
           log.error('Error trying to persist cookie', err, cookie);
         }
