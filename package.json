@@ -2,10 +2,12 @@
   "name": "igniteui-app-builder",
   "productName": "Ignite UI App Builder",
   "version": "1.0.0",
-  "description": "A brand-new cloud-based WYSIWYG drag & drop tool that eliminates the complexity of user interface design and development so you can build business apps faster than ever before. Start your app from scratch or choose from a library of pre-built app templates or responsive screen layouts and then customize with a toolbox of 60+ UI controls to kick-start your next digital product design!",
+  "description": "Ignite UI App Builder",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "keywords": [
     "Electron"
@@ -13,7 +15,25 @@
   "author": "Infragistics",
   "license": "CC0-1.0",
   "repository": "https://github.com/IgniteUI/app-builder/blob/master/ROADMAP.md",
+  "build": {
+    "appId": "app-builder",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/AppBuilderIcons_Windows.ico"
+    },
+    "nsis": {
+      "installerIcon": "assets/AppBuilderIcons_Windows.ico",
+      "uninstallerIcon": "assets/AppBuilderIcons_Windows.ico",
+      "uninstallDisplayName": "Ignite UI App Builder",
+      "license": "license.md",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
   "devDependencies": {
-    "electron": "^16.0.4"
+    "electron": "^16.0.4",
+    "electron-builder": "^22.14.5"
   }
 }
